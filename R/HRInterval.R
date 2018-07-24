@@ -19,8 +19,6 @@
 #'
 #' @export
 setGeneric("HRInterval", function(object, RawData, IntervalData, Param) {standardGeneric("HRInterval")})
-#'
-#'
 #' @rdname HRInterval
 #'
 #' @import data.table StQ BestTSPred

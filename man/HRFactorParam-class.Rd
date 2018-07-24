@@ -49,11 +49,22 @@ para cada unidad.}
 \item{\code{HRUnit}}{objeto de clase \code{data.table} con los valores del hit rate de los intervalos
 para cada unidad.}
 
+\item{\code{CHRUnit}}{objeto de clase \code{data.table} con los valores óptimos de las unidades que no
+han sido marcadas y efectivamente no tenían error para cada unidad.}
+
 \item{\code{HRDomain}}{objeto de clase \code{data.table} con los valores del hit rate de los intervalos
 para cada celda (partición de la muestra).}
 
+\item{\code{CHRDomain}}{objeto de clase \code{data.table} con los valores óptimos de las unidades que no
+han sido marcadas y efectivamente no tenían error para cada celda (partición de la muestra).}
+
 \item{\code{HRlambda}}{objeto de clase \code{data.table} para la estabilización del factor asociado al
-\emph{hit-rate}. Debe ser, para cada unidad, un valor en el intervalo [0, 1].}
+\emph{hit-rate}. Debe ser, para cada unidad, un valor en el intervalo [0, 1] y está asociado al
+número de unidades marcadas correctamente.}
+
+\item{\code{CHRlambda}}{objeto de clase \code{data.table} para la estabilización del factor asociado al
+\emph{hit-rate}. Debe ser, para cada unidad, un valor en el intervalo [0, 1] y está asociado al
+número de unidades no marcadas y sin error.}
 }}
 
 \examples{

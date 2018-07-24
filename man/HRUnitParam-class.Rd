@@ -13,14 +13,16 @@ Definición de la clase S4 \code{HRUnitParam} que contiene los parámetros que u
 \describe{
 \item{\code{VarRoles}}{lista con las siguientes componentes:
 
-\item Units objeto de clase \code{data.table} con las unidades para las que se van a calcular
+\itemize{
+\item \code{Units} objeto de clase data.table con las unidades para las que se van a calcular
 los intervalos.
-
-\item ObjVariable \code{Vector} de tipo \code{character} de longitud 1 con el nombre de la variable
+\item \code{ObjVariable} Vector de tipo caracter de longitud 1 con el nombre de la variable
 para la que se están construyendo los intervalos de validación.
-
-\item IntervalsLimits \code{vector} de longitud 2 con los nombres utilizados en el repositorio
-para los extremos inferior y superior de los intervalos de validación.}
+\item \code{IntervalsLimits} Vector de longitud 2 con los nombres utilizados en el repositorio
+para los extremos inferior y superior de los intervalos de validación.
+\item \code{EditName} Vector de tipo caracter de longitud 1 con el nombre del edit para el
+que se está construyendo los intervalos de validación.
+}}
 }}
 
 \examples{

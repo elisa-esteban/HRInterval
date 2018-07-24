@@ -38,20 +38,15 @@ setMethod(
 
   if (length(intersect(IDQuals, unique(unlist(getIDQual(RawData))))) != length(IDQuals)) stop('[HRInterval::IntervalDomainHitRate] Los calificadores de unidad del slot RawData no se corresponden con las unidades especificadas en Units del slot VarRoles de Param.')
   if (length(intersect(IDQuals, unique(unlist(getIDQual(object))))) != length(IDQuals)) stop('[HRInterval::IntervalDomainHitRate] Los calificadores de unidad del slot EdData no se corresponden con las unidades especificadas en Units del slot VarRoles de Param.')
-  if (length(intersect(IDQuals, unique(unlist(getIDQual(IntervalData))))) != length(IDQuals)) stop('[HRInterval::IntervalDomainHitRate] Los calificadores de unidad del parámetro IntervalData no se corresponden con las unidades especificadas en Units del slot VarRoles de Param.')
+  if (length(intersect(IDQuals, unique(unlist(getIDQual(IntervalData))))) != length(IDQuals)) stop('[HRInterval::IntervalDomainHitRate] Los calificadores de unidad del parametro IntervalData no se corresponden con las unidades especificadas en Units del slot VarRoles de Param.')
 
   IDDD_RawData <- getIDDD(RawData)
-  if (!ExtractNames(HRDomainParam@VarRoles[['ObjVariable']]) %in% IDDD_RawData) stop('[HRInterval::IntervalDomainHitRate] El parámetro RawData no contiene datos sobre la variable especificada en la componente ObjVariable del slot VarRoles de Param.')
-  if (!all(ExtractNames(HRDomainParam@VarRoles[['Domains']]) %in% IDDD_RawData)) stop('[HRInterval::IntervalDomainHitRate] El parámetro RawData no contiene datos sobre alguna de las variables especificadas en la componente Domains del slot VarRoles de Param.')
+  if (!ExtractNames(HRDomainParam@VarRoles[['ObjVariable']]) %in% IDDD_RawData) stop('[HRInterval::IntervalDomainHitRate] El parametro RawData no contiene datos sobre la variable especificada en la componente ObjVariable del slot VarRoles de Param.')
+  if (!all(ExtractNames(HRDomainParam@VarRoles[['Domains']]) %in% IDDD_RawData)) stop('[HRInterval::IntervalDomainHitRate] El parametro RawData no contiene datos sobre alguna de las variables especificadas en la componente Domains del slot VarRoles de Param.')
 
   IDDD_EdData <- getIDDD(object)
-  if (!ExtractNames(HRDomainParam@VarRoles[['ObjVariable']]) %in% IDDD_EdData) stop('[HRInterval::IntervalDomainHitRate] El parámetro object no contiene datos sobre la variable especificada en la componente ObjVariable del slot VarRoles de Param.')
-  if (!all(ExtractNames(HRDomainParam@VarRoles[['Domains']]) %in% IDDD_EdData)) stop('[HRInterval::IntervalDomainHitRate] El parámetro object no contiene datos sobre alguna de las variables especificadas en la compontente Domains del slot VarRoles de Param.')
-
-  Edit_IntervalData <- unique(getData(IntervalData)[['IDEdit']])
-  if (!HRDomainParam@VarRoles[['EditName']] %in% Edit_IntervalData) stop('[HRInterval::IntervalDomainHitRate] El parámetro IntervalData no contiene datos sobre el edit especificado en la componente EditName del slot VarRoles de Param.')
-
-  ## Fin Validaciones
+  if (!ExtractNames(HRDomainParam@VarRoles[['ObjVariable']]) %in% IDDD_EdData) stop('[HRInterval::IntervalDomainHitRate] El parametro object no contiene datos sobre la variable especificada en la componente ObjVariable del slot VarRoles de Param.')
+  if (!all(ExtractNames(HRDomainParam@VarRoles[['Domains']]) %in% IDDD_EdData)) stop('[HRInterval::IntervalDomainHitRate] El parametro object no contiene datos sobre alguna de las variables especificadas en la compontente Domains del slot VarRoles de Param.')
 
 
   Units <- getUnits(object)
@@ -59,16 +54,26 @@ setMethod(
   EdUnits <- getUnits(object)
   RawUnits <- getUnits(RawData)
 
-  if (!identical(HRDomainParam@VarRoles[['Units']], names(Units))) stop('[HRInterval::IntervalDomainHitRate] Los calificadores de unidad especificados en la componente Units del slot VarRoles del parámetro HRUnitParam no se corresponden con las unidades del objeto de entrada.')
+  if (!identical(HRDomainParam@VarRoles[['Units']], names(Units))) stop('[HRInterval::IntervalDomainHitRate] Los calificadores de unidad especificados en la componente Units del slot VarRoles del parametro HRUnitParam no se corresponden con las unidades del objeto de entrada.')
   Units <- fintersect(Units, EdUnits)
   Units <- fintersect(Units, RawUnits)
 
+  Edit_IntervalData <- unique(getData(IntervalData)[['IDEdit']])
 
-  IntervalTable <- IntervalData[IDEdit == HRDomainParam@VarRoles[['EditName']]]
-  if (dim(IntervalTable)[1] == 0) return(data.table())
-  IntervalTable <- dcast_StQ(IntervalTable)
-  IntervalTable <- merge(Units, IntervalTable, by = IDQuals)
-  IntervalTable <- IntervalTable[, c(IDQuals, IntervalsLimits), with = FALSE]
+  if (!HRDomainParam@VarRoles[['EditName']] %in% Edit_IntervalData) {
+
+    warning('[HRInterval::IntervalDomainHitRate] El parametro IntervalData no contiene datos sobre el edit especificado en la componente EditName del slot VarRoles de Param.')
+    IntervalTable <- copy(Units)[, (IntervalsLimits) := NA_real_]
+
+  }else {
+
+    IntervalTable <- IntervalData[IDEdit == HRDomainParam@VarRoles[['EditName']]]
+    #  if (dim(IntervalTable)[1] == 0) return(data.table())
+    IntervalTable <- dcast_StQ(IntervalTable)
+    IntervalTable <- merge(Units, IntervalTable, by = IDQuals)
+    IntervalTable <- IntervalTable[, c(IDQuals, IntervalsLimits), with = FALSE]
+
+  }
 
   Vars <- c(DomainNames, VarName)
 
@@ -93,8 +98,8 @@ setMethod(
 
   output[, (c('CorrectFlagged', 'CorrectNonFlagged', 'Flagged','TotalReg')) := NULL]
 
-  if (dim(output[is.na(IntervHRDomain)])[1] > 0) output[is.na(IntervHRDomain)][['IntervHRDomain']] <- 1
-  if (dim(output[is.na(IntervCHRDomain)])[1] > 0) output[is.na(IntervCHRDomain)][['IntervCHRDomain']] <- 1
+  if (dim(output[is.nan(IntervHRDomain)])[1] > 0) output[is.nan(IntervHRDomain)][['IntervHRDomain']] <- 1
+  if (dim(output[is.nan(IntervCHRDomain)])[1] > 0) output[is.nan(IntervCHRDomain)][['IntervCHRDomain']] <- 1
 
   output <- merge(EdTable, output, by = DomainNames, all.x = TRUE)
   output[, (VarName) := NULL]

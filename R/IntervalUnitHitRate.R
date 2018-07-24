@@ -36,7 +36,6 @@ setMethod(
   RawUnits <- getUnits(RawData)
   RawUnits[, ('Period') := NULL]
 
-  ## Validaciones
 
   IDQualsParam <- HRUnitParam@VarRoles[['Units']]
 
@@ -51,6 +50,7 @@ setMethod(
   IDDD_EdData <- unique(unlist(lapply(getData(EdData), getIDDD)))
   if (!ExtractNames(VarName) %in% IDDD_EdData) stop('[HRInterval::IntervalUnitHitRate] El parametro EdData no contiene datos sobre la variable especificada en la componente ObjVariable del slot VarRoles.')
 
+
   DataInterval <- getData(IntervalData)
   Edit_IntervalData <- lapply(DataInterval, function(StQ){
 
@@ -59,30 +59,27 @@ setMethod(
   })
 
   Edit_IntervalData <- unique(unlist(Edit_IntervalData))
-
-  if (!HRUnitParam@VarRoles[['EditName']] %in% Edit_IntervalData) stop('[HRInterval::IntervalUnitHitRate] El parametro IntervalData no contiene datos sobre el edit especificado en la componente EditName de VarRoles.')
-
-  ## Fin Validaciones
-
-
   Units <- fintersect(Units, EdUnits)
   Units <- fintersect(Units, RawUnits)
 
+  if (!HRUnitParam@VarRoles[['EditName']] %in% Edit_IntervalData) {
+
+    warning('[HRInterval::IntervalUnitHitRate] El parametro IntervalData no contiene datos sobre el edit especificado en la componente EditName de VarRoles.')
+    IntervalsTable <- copy(Units)[, (IntervalsLimits) := NA_real_]
+
+  } else{
+
+    Intervals.StQ <- StQListToStQ(IntervalData)
+    Intervals.StQ <- Intervals.StQ[IDEdit == HRUnitParam@VarRoles[['EditName']]]
+    IntervalsTable <- dcast_StQ(Intervals.StQ)
+    IntervalsTable <- merge(Units, IntervalsTable, by = IDQuals)
+    IDQuals <- c(IDQuals, 'Period')
+    IntervalsTable <- IntervalsTable[, c(IDQuals, IntervalsLimits), with = FALSE]
+
+  }
+
   EdTable <- getValues(EdData, VarName, Units)
   RawTable <- getValues(RawData, VarName, Units)
-
-
-  Intervals.StQ <- StQListToStQ(IntervalData)
-  Intervals.StQ <- Intervals.StQ[IDEdit == HRUnitParam@VarRoles[['EditName']]]
-
-  if (dim(Intervals.StQ)[1] == 0) return(data.table())
-
-  IntervalsTable <- dcast_StQ(Intervals.StQ)
-  IntervalsTable <- merge(Units, IntervalsTable, by = IDQuals)
-
-  IDQuals <- c(IDQuals, 'Period')
-  IntervalsTable <- IntervalsTable[, c(IDQuals, IntervalsLimits), with = FALSE]
-
 
   ErrorTable <- merge(EdTable, RawTable, by = IDQuals, suffixes = c('.ed', '.raw'))
   ErrorTable <- merge(ErrorTable, IntervalsTable, by = IDQuals)
@@ -101,8 +98,8 @@ setMethod(
   output[, IntervCHRUnit := CorrectNonFlagged/(TotalReg - Flagged)]
   output[, (c('CorrectFlagged', 'CorrectNonFlagged', 'Flagged','TotalReg')) := NULL]
 
-  if (dim(output[is.na(IntervHRUnit)])[1] > 0) output[is.na(IntervHRUnit)][['IntervHRUnit']] <- 1
-  if (dim(output[is.na(IntervCHRUnit)])[1] > 0) output[is.na(IntervCHRUnit)][['IntervCHRUnit']] <- 1
+  if (dim(output[is.nan(IntervHRUnit)])[1] > 0) output[is.nan(IntervHRUnit)][['IntervHRUnit']] <- 1
+  if (dim(output[is.nan(IntervCHRUnit)])[1] > 0) output[is.nan(IntervCHRUnit)][['IntervCHRUnit']] <- 1
 
   setkeyv(output, IDQuals)
 
