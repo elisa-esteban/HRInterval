@@ -54,7 +54,7 @@ setMethod(
   DataInterval <- getData(IntervalData)
   Edit_IntervalData <- lapply(DataInterval, function(StQ){
 
-    out <- unique(getData(StQ)[['IDEdit']])
+    out <- unique(getData(StQ)[Value != VarName][['IDEdit']])
 
   })
 
@@ -67,7 +67,7 @@ setMethod(
     warning('[HRInterval::IntervalUnitHitRate] El parametro IntervalData no contiene datos sobre el edit especificado en la componente EditName de VarRoles.')
     IntervalsTable <- copy(Units)[, (IntervalsLimits) := NA_real_]
 
-  } else{
+  }else {
 
     Intervals.StQ <- StQListToStQ(IntervalData)
     Intervals.StQ <- Intervals.StQ[IDEdit == HRUnitParam@VarRoles[['EditName']]]
