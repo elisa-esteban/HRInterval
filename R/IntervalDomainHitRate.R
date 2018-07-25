@@ -63,7 +63,7 @@ setMethod(
   if (!HRDomainParam@VarRoles[['EditName']] %in% Edit_IntervalData) {
 
     warning('[HRInterval::IntervalDomainHitRate] El parametro IntervalData no contiene datos sobre el edit especificado en la componente EditName del slot VarRoles de Param.')
-    IntervalTable <- copy(Units)[, .(IntervalsLimits) := NA_real_]
+    IntervalTable <- copy(Units)[, (IntervalsLimits) := NA_real_]
 
   }else {
 
