@@ -1,5 +1,7 @@
-#' método \code{\link{HRInterval}} para la obtención de intervalos de validación mediante el
-#' cálculo de sus centros y radios.
+#' Clase S4 HRIntervalParam para los parámetros del método HRInterval
+#'
+#' Definición de la clase S4 \code{HRIntervalParam} que contiene los parámetros que utiliza el método
+#' \code{\link{HRInterval}.
 #'
 #' @slot Units objeto de clase \code{data.table} con las unidades para las que se van a calcular
 #' los intervalos.
@@ -75,7 +77,9 @@ setClass(
             HRDomain = 'data.table',
             CHRDomain = 'data.table',
             HRlambda = 'data.table',
-            CHRlambda = 'data.table'
+            CHRlambda = 'data.table',
+            Lower = 'data.table',
+            Upper = 'data.table'
   ),
   validity = function(object){
 
@@ -92,7 +96,9 @@ setClass(
     if (!identical(names(object@HRDomain), c(IDQuals, 'HRDomain'))) stop('[HRIntervalParam validation] Los nombres de la data.table del slot HRDomain han de ser: ', IDQuals, ' y ', 'HRDomain')
     if (!identical(names(object@CHRDomain), c(IDQuals, 'CHRDomain'))) stop('[HRIntervalParam validation] Los nombres de la data.table del slot HRDomain han de ser: ', IDQuals, ' y ', 'CHRDomain')
     if (!identical(names(object@HRlambda), c(IDQuals, 'HRlambda'))) stop('[HRIntervalParam validation] Los nombres de la data.table del slot HRlambda han de ser: ', IDQuals, ' y ', 'HRlambda')
-    if (!identical(names(object@CHRlambda), c(IDQuals, 'CHRlambda'))) stop('[HRIntervalParam validation] Los nombres de la data.table del slot CHRlambda han de ser: ', IDQuals, ' y ', 'HRlambda')
+    if (!identical(names(object@CHRlambda), c(IDQuals, 'CHRlambda'))) stop('[HRIntervalParam validation] Los nombres de la data.table del slot CHRlambda han de ser: ', IDQuals, ' y ', 'CHRlambda')
+    if (!identical(names(object@Lower), c(IDQuals, 'Lower'))) stop('[HRIntervalParam validation] Los nombres de la data.table del slot Lower han de ser: ', IDQuals, ' y ', 'Lower')
+    if (!identical(names(object@Upper), c(IDQuals, 'Upper'))) stop('[HRIntervalParam validation] Los nombres de la data.table del slot Upper han de ser: ', IDQuals, ' y ', 'Upper')
 
     if (dim(merge(object@LastFactor, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y LastFactor no coinciden.')
     if (dim(merge(object@MinFactor, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y MinFactor no coinciden.')
@@ -103,6 +109,8 @@ setClass(
     if (dim(merge(object@CHRDomain, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y CHRDomain no coinciden.')
     if (dim(merge(object@HRlambda, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y HRlambda no coinciden.')
     if (dim(merge(object@CHRlambda, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y CHRlambda no coinciden.')
+    if (dim(merge(object@Lower, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y Lower no coinciden.')
+    if (dim(merge(object@Upper, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y Upper no coinciden.')
 
 
     return(TRUE)
