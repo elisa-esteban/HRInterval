@@ -34,6 +34,10 @@ setMethod(
     Units <- Param@Units
     BestTS <- Param@BestTSPred
     VarName <- Param@VarName
+    Lower <- Param@Lower
+    if (all(is.na(Lower[['Lower']]))) Lower[, Lower := NULL]
+    Upper <- Param@Upper
+    if (all(is.na(Upper[['Upper']]))) Upper[, Upper := NULL]
 
     Times <- intersect(getPeriods(RawData), getPeriods(object))
     if (length(Times) == 0) {
@@ -77,13 +81,10 @@ setMethod(
     setnames(BestTS, setdiff(names(BestTS), IDQuals), c('CentPred', 'STDPred'))
     BestTS <- merge(BestTS, HRFactor, by = IDQuals, all.x = TRUE)
 
-    BestTS[, Lower := CentPred - HRFactor * STDPred, by = IDQuals]
-    BestTS[, Upper := CentPred + HRFactor * STDPred, by = IDQuals]
+    BestTS[, Lower := ifelse(dim(Lower)[2] == dim(Units)[2], CentPred - HRFactor * STDPred, Lower[['Lower']]), by = IDQuals]
+    BestTS[, Upper := ifelse(dim(Upper)[2] == dim(Units)[2], CentPred + HRFactor * STDPred, Upper[['Upper']]), by = IDQuals]
 
     output <- BestTS[, c(IDQuals, 'HRFactor', 'Lower', 'Upper'), with = FALSE]
-
-    if (dim(output[is.na(Lower) | is.infinite(Lower)])[1] > 0) output[is.na(Lower) | is.infinite(Lower)][['Lower']] <- -99.99
-    if (dim(output[is.na(Upper) | is.infinite(Upper)])[1] > 0) output[is.na(Upper) | is.infinite(Upper)][['Upper']] <- 99.99
 
     return(output)
 })
