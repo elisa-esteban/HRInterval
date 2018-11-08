@@ -1,7 +1,7 @@
 Package: HRInterval
 Type: Package
 Title: Classes and methods to create validation intervals
-Version: 0.4.0
+Version: 0.5.0
 Authors@R: c(
     person("David", "Salgado", email = "david.salgado.fernandez@gmail.com", role = c("cre", "aut")),
     person("Elisa", "Esteban", email = "elisa.esteban.segurado@gmail.com", role = "aut"),
@@ -15,10 +15,18 @@ Imports: methods (>= 3.3.0), data.table (>= 1.10.0), StQ (>= 0.3.3),
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
-Collate: 'HRDomainParam-class.R' 'HRUnitParam-class.R'
-        'HRFactorParam-class.R' 'HRFactor.R' 'HRIntervalParam-class.R'
-        'HRInterval.R' 'IntervalDomainHitRate.R'
-        'IntervalUnitHitRate.R'
+Collate: 
+    'UpdateHRFactorParam-class.R'
+    'BuildUpdateHRFactorParam.R'
+    'HRDomainParam-class.R'
+    'HRUnitParam-class.R'
+    'HRFactorParam-class.R'
+    'HRFactor.R'
+    'HRIntervalParam-class.R'
+    'HRInterval.R'
+    'IntervalDomainHitRate.R'
+    'IntervalUnitHitRate.R'
+    'UpdateParamHRFactor.R'
 RoxygenNote: 6.0.1
 NeedsCompilation: no
 Packaged: 2018-04-26 10:14:21 UTC; Administrador

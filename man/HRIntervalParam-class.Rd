@@ -3,15 +3,10 @@
 \docType{class}
 \name{HRIntervalParam-class}
 \alias{HRIntervalParam-class}
-\title{método \code{\link{HRInterval}} para la obtención de intervalos de validación mediante el
-cálculo de sus centros y radios.}
+\title{Clase S4 HRIntervalParam para los parámetros del método HRInterval}
 \arguments{
 \item{IntervalsLimits}{\code{vector} de longitud 2 con los nombres utilizados en el repositorio
 para los extremos inferior y superior de los intervalos de validación.}
-}
-\description{
-método \code{\link{HRInterval}} para la obtención de intervalos de validación mediante el
-cálculo de sus centros y radios.
 }
 \section{Slots}{
 
