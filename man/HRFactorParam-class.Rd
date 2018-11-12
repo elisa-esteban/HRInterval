@@ -3,15 +3,15 @@
 \docType{class}
 \name{HRFactorParam-class}
 \alias{HRFactorParam-class}
-\title{Clase S4 HRFactorParam para los parámetros del método HRFactor}
+\title{Clase S4 HRFactorParam para los parametros del método HRFactor}
 \arguments{
 \item{IntervalsLimits}{\code{vector} de longitud 2 con los nombres utilizados en el repositorio
-para los extremos inferior y superior de los intervalos de validación.}
+para los extremos inferior y superior de los intervalos de validacion.}
 }
 \description{
-Definición de la clase S4 \code{HRFactorParam} que contiene los parámetros que utiliza el método
-\code{\link{HRFactor}} para el cálculo del factor hit rate en la obtención de los radios de los
-intervalos de validación con el método \code{\link{HRInterval}}.
+Definicion de la clase S4 \code{HRFactorParam} que contiene los parametros que utiliza el metodo
+\code{\link{HRFactor}} para el calculo del factor hit rate en la obtencion de los radios de los
+intervalos de validacion con el metodo \code{\link{HRInterval}}.
 }
 \section{Slots}{
 
@@ -20,19 +20,19 @@ intervalos de validación con el método \code{\link{HRInterval}}.
 los intervalos.}
 
 \item{\code{VarName}}{\code{Vector} de tipo \code{character} de longitud 1 con el nombre de la variable
-para la que se están construyendo los intervalos de validación.}
+para la que se estan construyendo los intervalos de validacion.}
 
 \item{\code{Edit}}{\code{Vector} de tipo \code{character} de longitud 1 con el nombre del edit para el
-que se está construyendo los intervalos de validación.}
+que se esta construyendo los intervalos de validacion.}
 
 \item{\code{DomainNames}}{\code{Vector} de tipo \code{character} con los nombres de la variables que
 establecen las celdas (partición de la muestra).}
 
-\item{\code{Intervals}}{objeto de clase \linkS4class{StQList} con los límites de los intervalos del edit
+\item{\code{Intervals}}{objeto de clase \linkS4class{StQList} con los limites de los intervalos del edit
 para cada unidad}
 
 \item{\code{LastFactor}}{objeto de clase \code{data.table} con los valores del factor hit rate del edit
-en el último periodo para cada unidad.}
+en el ultimo periodo para cada unidad.}
 
 \item{\code{RawData}}{Objeto de clase \linkS4class{StQList} con los datos sin depurar que se encuentran
 en los ficheros FG del repositorio de la encuesta.}
@@ -40,10 +40,10 @@ en los ficheros FG del repositorio de la encuesta.}
 \item{\code{EdData}}{Objeto de clase \linkS4class{StQList} con los datos finales que se encuentran en los
 ficheros FF del repositorio de la encuesta.}
 
-\item{\code{MinFactor}}{objeto de clase \code{data.table} con los valores mínimos del factor hit rate
+\item{\code{MinFactor}}{objeto de clase \code{data.table} con los valores minimos del factor hit rate
 para cada unidad.}
 
-\item{\code{MaxFactor}}{objeto de clase \code{data.table} con los valores máximos del factor hit rate
+\item{\code{MaxFactor}}{objeto de clase \code{data.table} con los valores maximos del factor hit rate
 para cada unidad.}
 
 \item{\code{HRUnit}}{objeto de clase \code{data.table} con los valores del hit rate de los intervalos
@@ -53,18 +53,18 @@ para cada unidad.}
 han sido marcadas y efectivamente no tenían error para cada unidad.}
 
 \item{\code{HRDomain}}{objeto de clase \code{data.table} con los valores del hit rate de los intervalos
-para cada celda (partición de la muestra).}
+para cada celda (particion de la muestra).}
 
-\item{\code{CHRDomain}}{objeto de clase \code{data.table} con los valores óptimos de las unidades que no
-han sido marcadas y efectivamente no tenían error para cada celda (partición de la muestra).}
+\item{\code{CHRDomain}}{objeto de clase \code{data.table} con los valores optimos de las unidades que no
+han sido marcadas y efectivamente no tenian error para cada celda (partición de la muestra).}
 
-\item{\code{HRlambda}}{objeto de clase \code{data.table} para la estabilización del factor asociado al
-\emph{hit-rate}. Debe ser, para cada unidad, un valor en el intervalo [0, 1] y está asociado al
+\item{\code{HRlambda}}{objeto de clase \code{data.table} para la estabilizacion del factor asociado al
+\emph{hit-rate}. Debe ser, para cada unidad, un valor en el intervalo [0, 1] y esta asociado al
 número de unidades marcadas correctamente.}
 
-\item{\code{CHRlambda}}{objeto de clase \code{data.table} para la estabilización del factor asociado al
-\emph{hit-rate}. Debe ser, para cada unidad, un valor en el intervalo [0, 1] y está asociado al
-número de unidades no marcadas y sin error.}
+\item{\code{CHRlambda}}{objeto de clase \code{data.table} para la estabilizacion del factor asociado al
+\emph{hit-rate}. Debe ser, para cada unidad, un valor en el intervalo [0, 1] y esta asociado al
+numero de unidades no marcadas y sin error.}
 }}
 
 \examples{

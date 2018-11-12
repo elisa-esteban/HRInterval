@@ -1,15 +1,21 @@
-#' Cálculo de intervalos de validación
+#' Calculo de intervalos de validacion
 #'
-#' \code{HRInterval} construye intervalos de validación determinando los valores de sus centros
+#' \code{HRInterval} construye intervalos de validacion determinando los valores de sus centros
 #' y sus radios.
 #'
 #' @param object Objeto de clase \linkS4class{StQList} con los datos y unidades de las series de
 #' tiempo con los que vamos a calcular los intervalos.
 #'
-#' @param Param Objeto de clase \linkS4class{HRIntervalParam} con los parámetros necesarios para
+#' @param RawData objeto de clase \linkS4class{StQList} con el historico de
+#' datos sin depurar de las unidades.
+#'
+#' @param IntervalData objeto de clase \linkS4class{StQList} con el historico de
+#' los intervalos de validacion de las unidades.
+#'
+#' @param Param Objeto de clase \linkS4class{HRIntervalParam} con los parametros necesarios para
 #' determinar los intervalos.
 #'
-#' @return Objeto de clase \linkS4class{IntervalsDT} con los intervalos de validación para los datos
+#' @return Objeto de clase \linkS4class{IntervalsDT} con los intervalos de validacion para los datos
 #' del objeto de entrada \code{object}.
 #'
 #' @examples
@@ -42,7 +48,7 @@ setMethod(
     Times <- intersect(getPeriods(RawData), getPeriods(object))
     if (length(Times) == 0) {
 
-      stop('[HRInterval: HRIntervalParam] No hay series de tiempo coincidentes entre el parámetro de entrada object y el parámetro Param@RawList.')
+      stop('[HRInterval: HRIntervalParam] No hay series de tiempo coincidentes entre el parametro de entrada object y el parametro Param@RawList.')
     }
 
     EdList <- subPeriods(object, Times)

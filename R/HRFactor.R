@@ -1,12 +1,21 @@
-#' Cálculo del factor hit rate
+#' Calculo del factor hit rate
 #'
-#' \code{HRFactor} calcula el factor hit rate para obtener el radio de los intervalos de validación
+#' \code{HRFactor} calcula el factor hit rate para obtener el radio de los intervalos de validacion
 #' con el método \code{\link{HRInterval}}.
 #'
 #' @param object Objeto de clase \linkS4class{StQ} con los datos para los que se quiere calcular
 #' el intervalo.
 #'
-#' @param Param Objeto de clase \linkS4class{HRFactorParam} con los parámetros necesarios para
+#' @param EdData objeto de clase \linkS4class{StQList} con el historico de
+#' datos depurados de las unidades.
+#'
+#' @param RawData objeto de clase \linkS4class{StQList} con el historico de
+#' datos sin depurar de las unidades.
+#'
+#' @param IntervalData objeto de clase \linkS4class{StQList} con el historico de
+#' intervalos de validacion.
+#'
+#' @param Param Objeto de clase \linkS4class{HRFactorParam} con los parametros necesarios para
 #' calcular el factor hit rate.
 #'
 #' @return \code{Vector} de tipo \code{numeric} con los factores hit rate de la variable.
@@ -38,31 +47,31 @@ setMethod(
 
     ### Validaciones ###
     IDQuals <- names(Param@Units)
-    if (length(intersect(IDQuals, unique(unlist(getIDQual(RawData))))) != length(IDQuals)) stop('[HRFactor validation] Los calificadores de unidad del parámetro RawData no se corresponden con las unidades especificadas en el slot Units de Param.')
-    if (length(intersect(IDQuals, unique(unlist(getIDQual(EdData))))) != length(IDQuals)) stop('[HRFactor validation] Los calificadores de unidad del parámetro EdData no se corresponden con las unidades especificadas en el slot Units de Param.')
-    if (length(intersect(IDQuals, unique(unlist(getIDQual(IntervalData))))) != length(IDQuals)) stop('[HRFactor validation] Los calificadores de unidad del parámetro IntervalData no se corresponden con las unidades especificadas en el slot Units de Param.')
+    if (length(intersect(IDQuals, unique(unlist(getIDQual(RawData))))) != length(IDQuals)) stop('[HRFactor validation] Los calificadores de unidad del parametro RawData no se corresponden con las unidades especificadas en el slot Units de Param.')
+    if (length(intersect(IDQuals, unique(unlist(getIDQual(EdData))))) != length(IDQuals)) stop('[HRFactor validation] Los calificadores de unidad del parametro EdData no se corresponden con las unidades especificadas en el slot Units de Param.')
+    if (length(intersect(IDQuals, unique(unlist(getIDQual(IntervalData))))) != length(IDQuals)) stop('[HRFactor validation] Los calificadores de unidad del parametro IntervalData no se corresponden con las unidades especificadas en el slot Units de Param.')
 
     Periods.RawData <- getPeriods(RawData)
     Periods.EdData <- getPeriods(EdData)
-    if (length(intersect(Periods.RawData, Periods.EdData)) == 0) stop('[HRFactor validation] Los parámetros RawData y EdData no tienen ningún periodo en común.')
+    if (length(intersect(Periods.RawData, Periods.EdData)) == 0) stop('[HRFactor validation] Los parametros RawData y EdData no tienen ningun periodo en comun.')
 
     IDDD_RawData <- unique(unlist(lapply(getData(RawData), getIDDD)))
-    if (!ExtractNames(Param@VarName) %in% IDDD_RawData) stop('[HRFactor validation] El parámetro RawData no contiene datos sobre la variable especificada en el slot VarName de Param.')
-    if (!all(ExtractNames(Param@DomainNames) %in% IDDD_RawData)) stop('[HRFactor validation] El parámetro RawData no contiene datos sobre alguna de las variables especificadas en el slot DomainNames de Param.')
+    if (!ExtractNames(Param@VarName) %in% IDDD_RawData) stop('[HRFactor validation] El parametro RawData no contiene datos sobre la variable especificada en el slot VarName de Param.')
+    if (!all(ExtractNames(Param@DomainNames) %in% IDDD_RawData)) stop('[HRFactor validation] El parametro RawData no contiene datos sobre alguna de las variables especificadas en el slot DomainNames de Param.')
 
     IDDD_EdData <- unique(unlist(lapply(getData(EdData), getIDDD)))
-    if (!ExtractNames(Param@VarName) %in% IDDD_EdData) stop('[HRFactor validation] El parámetro EdData no contiene datos sobre la variable especificada en el slot VarName de Param.')
-    if (!all(ExtractNames(Param@DomainNames) %in% IDDD_EdData)) stop('[HRFactor validation] El parámetro EdData no contiene datos sobre alguna de las variables especificadas en el slot DomainNames de Param.')
+    if (!ExtractNames(Param@VarName) %in% IDDD_EdData) stop('[HRFactor validation] El parametro EdData no contiene datos sobre la variable especificada en el slot VarName de Param.')
+    if (!all(ExtractNames(Param@DomainNames) %in% IDDD_EdData)) stop('[HRFactor validation] El parametro EdData no contiene datos sobre alguna de las variables especificadas en el slot DomainNames de Param.')
 
     Units_RawData <- getUnits(RawData)
     Units_RawData[, Period := NULL]
-    if (dim(merge(unique(Units_RawData), Param@Units, by = IDQuals))[1] == 0) stop('[HRFactor validation] En el parámetro RawData no exite ninguna unidad en el slot Units de Param .')
+    if (dim(merge(unique(Units_RawData), Param@Units, by = IDQuals))[1] == 0) stop('[HRFactor validation] En el parametro RawData no exite ninguna unidad en el slot Units de Param .')
     Units_EdData <- getUnits(EdData)
     Units_EdData[, Period := NULL]
-    if (dim(merge(unique(Units_EdData), Param@Units, by = IDQuals))[1] == 0) stop('[HRFactor validation] En el parámetro EdData no exite ninguna unidad en el slot Units de Param.')
+    if (dim(merge(unique(Units_EdData), Param@Units, by = IDQuals))[1] == 0) stop('[HRFactor validation] En el parametro EdData no exite ninguna unidad en el slot Units de Param.')
     Units_IntervalData <- getUnits(IntervalData)
     Units_IntervalData <- Units_IntervalData[, Period := NULL]
-    if (dim(merge(unique(Units_IntervalData), Param@Units, by = IDQuals))[1] == 0) stop('[HRFactor validation] En el parámetro IntervalData no exite ninguna unidad en el slot Units de Param')
+    if (dim(merge(unique(Units_IntervalData), Param@Units, by = IDQuals))[1] == 0) stop('[HRFactor validation] En el parametro IntervalData no exite ninguna unidad en el slot Units de Param')
 
 
     ### Fin Validaciones ###

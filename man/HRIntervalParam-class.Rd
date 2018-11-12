@@ -3,10 +3,14 @@
 \docType{class}
 \name{HRIntervalParam-class}
 \alias{HRIntervalParam-class}
-\title{Clase S4 HRIntervalParam para los parámetros del método HRInterval}
+\title{Clase S4 HRIntervalParam para los parametros del metodo HRInterval}
 \arguments{
 \item{IntervalsLimits}{\code{vector} de longitud 2 con los nombres utilizados en el repositorio
-para los extremos inferior y superior de los intervalos de validación.}
+para los extremos inferior y superior de los intervalos de validacion.}
+}
+\description{
+Definicion de la clase S4 \code{HRIntervalParam} que contiene los parametros que utiliza el metodo
+\code{\link{HRInterval}}.
 }
 \section{Slots}{
 
@@ -15,49 +19,48 @@ para los extremos inferior y superior de los intervalos de validación.}
 los intervalos.}
 
 \item{\code{VarName}}{\code{Vector} de tipo \code{character} de longitud 1 con el nombre de la variable
-para la que se están construyendo los intervalos de validación.}
+para la que se estan construyendo los intervalos de validacion.}
 
 \item{\code{Edit}}{\code{Vector} de tipo \code{character} de longitud 1 con el nombre del edit para el
-que se están construyendo los intervalos de validación.}
+que se estan construyendo los intervalos de validacion.}
 
 \item{\code{DomainNames}}{\code{Vector} de tipo \code{character} con los nombres de la variables que
-establecen las celdas (partición de la muestra).}
+establecen las celdas (particion de la muestra).}
 
 \item{\code{LastFactor}}{objeto de clase \code{data.table} con los valores del factor hit rate del edit
-en el último periodo para cada unidad.}
+en el ultimo periodo para cada unidad.}
 
-\item{\code{BestTSPred}}{Objeto de clase \linkS4class{data.table} con la mejor predicción de entre un
+\item{\code{BestTSPred}}{Objeto de clase \linkS4class{data.table} con la mejor prediccion de entre un
 conjunto de modelos para la variable considerada.}
 
-\item{\code{MinFactor}}{objeto de clase \code{data.table} con los valores mínimos del factor hit rate
+\item{\code{MinFactor}}{objeto de clase \code{data.table} con los valores minimos del factor hit rate
 para cada unidad.}
 
-\item{\code{MaxFactor}}{objeto de clase \code{data.table} con los valores máximos del factor hit rate
+\item{\code{MaxFactor}}{objeto de clase \code{data.table} con los valores maximos del factor hit rate
 para cada unidad.}
 
 \item{\code{HRUnit}}{objeto de clase \code{data.table} con los valores del hit rate de los intervalos
 para cada unidad.}
 
-\item{\code{CHRUnit}}{objeto de clase \code{data.table} con los valores óptimos de las unidades que no
-han sido marcadas y efectivamente no tenían error para cada unidad.}
+\item{\code{CHRUnit}}{objeto de clase \code{data.table} con los valores optimos de las unidades que no
+han sido marcadas y efectivamente no tenian error para cada unidad.}
 
 \item{\code{HRDomain}}{objeto de clase \code{data.table} con los valores del hit rate de los intervalos
-para cada celda (partición de la muestra).}
+para cada celda (particion de la muestra).}
 
-\item{\code{CHRDomain}}{objeto de clase \code{data.table} con los valores óptimos de las unidades que no
-han sido marcadas y efectivamente no tenían error para cada celda (partición de la muestra).}
+\item{\code{CHRDomain}}{objeto de clase \code{data.table} con los valores optimos de las unidades que no
+han sido marcadas y efectivamente no tenian error para cada celda (particion de la muestra).}
 
-\item{\code{HRlambda}}{objeto de clase \code{data.table} para la estabilización del factor asociado al
+\item{\code{HRlambda}}{objeto de clase \code{data.table} para la estabilizacion del factor asociado al
 \emph{hit-rate}. Debe ser, para cada unidad, un valor en el intervalo [0, 1].}
 
-\item{\code{CHRlambda}}{objeto de clase \code{data.table} para la estabilización del factor asociado al
-\emph{hit-rate}. Debe ser, para cada unidad, un valor en el intervalo [0, 1] y está asociado al
-número de unidades no marcadas y sin error.}
+\item{\code{CHRlambda}}{objeto de clase \code{data.table} para la estabilizacion del factor asociado al
+\emph{hit-rate}. Debe ser, para cada unidad, un valor en el intervalo [0, 1] y esta asociado al
+numero de unidades no marcadas y sin error.}
 
-\item{\code{Scale}}{\code{Vector} de tipo \code{numeric} de longitud 1 con el valor del parámetro de
-escala aplicado a la longitud del intervalo. Así, por ejemplo, si \eqn{Scale <- 2}, los
-intervalos obtenidos pasan a tener el doble de longitud con el mismo centro. Debe tomar un valor
-positivo. Por defecto toma el valor 1L.}
+\item{\code{Lower}}{objeto de clase \code{data.table}.}
+
+\item{\code{Upper}}{objeto de clase \code{data.table}.}
 }}
 
 \examples{

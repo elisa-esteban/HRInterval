@@ -4,7 +4,7 @@
 \name{IntervalUnitHitRate}
 \alias{IntervalUnitHitRate}
 \alias{IntervalUnitHitRate,StQ,StQList,StQList,StQList,HRUnitParam-method}
-\title{Cálculo del hit rate para unidades}
+\title{Calculo del hit rate para unidades}
 \usage{
 IntervalUnitHitRate(object, EdData, RawData, IntervalData, HRUnitParam)
 
@@ -12,6 +12,18 @@ IntervalUnitHitRate(object, EdData, RawData, IntervalData, HRUnitParam)
   EdData, RawData, IntervalData, HRUnitParam)
 }
 \arguments{
+\item{object}{objeto de clase \linkS4class{StQ} con las unidades para las
+que se desea calcular el hit rate.}
+
+\item{EdData}{objeto de clase \linkS4class{StQList} con el historico de
+datos depurados de las unidades.}
+
+\item{RawData}{objeto de clase \linkS4class{StQList} con el historico de
+datos sin depurar de las unidades.}
+
+\item{IntervalData}{objeto de clase \linkS4class{StQList} con el historico de
+los intervalos de validacion de las unidades.}
+
 \item{HRUnitParam}{Objeto de clase \linkS4class{HRUnitParam} con los parametros necesarios
 para calcular el hit rate de un conjunto de unidades.}
 }

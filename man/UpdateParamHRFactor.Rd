@@ -6,7 +6,7 @@
 \alias{UpdateParamHRFactor,data.table,UpdateHRFactorParam-method}
 \alias{UpdateParamHRFactor,list,UpdateHRFactorParam-method}
 \alias{UpdateParamHRFactor,list,list-method}
-\title{Actualización de los parámetros para el cálculo del factor hit rate.}
+\title{Actualizacion de los parametros para el calculo del factor hit rate.}
 \usage{
 UpdateParamHRFactor(object, Param)
 
@@ -18,19 +18,19 @@ UpdateParamHRFactor(object, Param)
 }
 \arguments{
 \item{object}{Lista o \linkS4class{data.table} con los valores para cada edit
-de los parámetros que intervienen en el cálculo del HitRate.}
+de los parametros que intervienen en el calculo del HitRate.}
 
 \item{Param}{Objeto de clase \linkS4class{UpdateHRFactorParam} con las unidades
-y valores de los parámetros que se desean actualizar en el objeto de entrada
+y valores de los parametros que se desean actualizar en el objeto de entrada
 object.}
 }
 \value{
-\code{Lista} con los parámetros para el cálculo de los factores hit rate
+\code{Lista} con los parámetros para el calculo de los factores hit rate
 del edit y unidades seleccionados actualizados.
 }
 \description{
-\code{UpdateParamHRFactor} Actualiza la lista de parámetros para el cálculo del factor hit rate
-con el método \code{\link{HRInterval}}.
+\code{UpdateParamHRFactor} Actualiza la lista de parametros para el calculo del factor hit rate
+con el metodo \code{\link{HRInterval}}.
 }
 \examples{
 \dontrun{

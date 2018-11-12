@@ -4,7 +4,7 @@
 \name{HRInterval}
 \alias{HRInterval}
 \alias{HRInterval,StQList,StQList,StQList,HRIntervalParam-method}
-\title{Cálculo de intervalos de validación}
+\title{Calculo de intervalos de validacion}
 \usage{
 HRInterval(object, RawData, IntervalData, Param)
 
@@ -15,15 +15,21 @@ HRInterval(object, RawData, IntervalData, Param)
 \item{object}{Objeto de clase \linkS4class{StQList} con los datos y unidades de las series de
 tiempo con los que vamos a calcular los intervalos.}
 
-\item{Param}{Objeto de clase \linkS4class{HRIntervalParam} con los parámetros necesarios para
+\item{RawData}{objeto de clase \linkS4class{StQList} con el historico de
+datos sin depurar de las unidades.}
+
+\item{IntervalData}{objeto de clase \linkS4class{StQList} con el historico de
+los intervalos de validacion de las unidades.}
+
+\item{Param}{Objeto de clase \linkS4class{HRIntervalParam} con los parametros necesarios para
 determinar los intervalos.}
 }
 \value{
-Objeto de clase \linkS4class{IntervalsDT} con los intervalos de validación para los datos
+Objeto de clase \linkS4class{IntervalsDT} con los intervalos de validacion para los datos
 del objeto de entrada \code{object}.
 }
 \description{
-\code{HRInterval} construye intervalos de validación determinando los valores de sus centros
+\code{HRInterval} construye intervalos de validacion determinando los valores de sus centros
 y sus radios.
 }
 \examples{

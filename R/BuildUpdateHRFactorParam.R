@@ -1,12 +1,15 @@
 #' @title Constructor de objetos de clase \linkS4class{UpdateHRFactorParam}
 #'
 #' @description Este constructor devuelve un objeto de clase \linkS4class{UpdateHRFactorParam}.
-#' a partir de un conjunto de parámetros.
+#' a partir de un conjunto de parametros.
 #'
 #' @param EditName \code{Vector} de tipo \code{character} de longitud 1 con el nombre
-#' del Edit para el que se establece la condición.
+#' del Edit para el que se establece la condicion.
 #'
-#' @param Values  \code{list} con los nuevos valores de los distintos parámetros del
+#' @param Units \code{data.table} con el conjunto de unidades cuyos parametros se
+#' desea actualizar.
+#'
+#' @param Values  \code{list} con los nuevos valores de los distintos parametros del
 #' HitRate que se quieren actualizar.
 #'
 #'

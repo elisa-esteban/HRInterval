@@ -1,7 +1,7 @@
 setClassUnion('characterOrNULL', c('character', 'NULL'))
-#' Clase S4 HRFactorParam para los parámetros de la función IntervalUnitHitRate
+#' Clase S4 HRFactorParam para los parametros de la funcion IntervalUnitHitRate
 #'
-#' Definición de la clase S4 \code{HRUnitParam} que contiene los parámetros que utiliza la función
+#' Definicion de la clase S4 \code{HRUnitParam} que contiene los parametros que utiliza la función
 #' \code{\link{IntervalUnitHitRate}} para el cálculo del hit rate de un conjunto de unidades.
 #'
 #' @slot VarRoles lista con las siguientes componentes:
@@ -10,11 +10,11 @@ setClassUnion('characterOrNULL', c('character', 'NULL'))
 #' \item \code{Units} objeto de clase data.table con las unidades para las que se van a calcular
 #' los intervalos.
 #' \item \code{ObjVariable} Vector de tipo caracter de longitud 1 con el nombre de la variable
-#' para la que se están construyendo los intervalos de validación.
+#' para la que se estan construyendo los intervalos de validacion.
 #' \item \code{IntervalsLimits} Vector de longitud 2 con los nombres utilizados en el repositorio
-#' para los extremos inferior y superior de los intervalos de validación.
+#' para los extremos inferior y superior de los intervalos de validacion.
 #'\item \code{EditName} Vector de tipo caracter de longitud 1 con el nombre del edit para el
-#' que se está construyendo los intervalos de validación.
+#' que se está construyendo los intervalos de validacion.
 #' }
 #'
 #' @examples

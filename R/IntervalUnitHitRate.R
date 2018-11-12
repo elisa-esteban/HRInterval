@@ -1,6 +1,18 @@
-#' Cálculo del hit rate para unidades
+#' Calculo del hit rate para unidades
 #'
 #' \code{IntervalUnitHitRate} calcula el hit rate de un conjunto de unidades.
+#'
+#' @param object objeto de clase \linkS4class{StQ} con las unidades para las
+#' que se desea calcular el hit rate.
+#'
+#' @param EdData objeto de clase \linkS4class{StQList} con el historico de
+#' datos depurados de las unidades.
+#'
+#' @param RawData objeto de clase \linkS4class{StQList} con el historico de
+#' datos sin depurar de las unidades.
+#'
+#' @param IntervalData objeto de clase \linkS4class{StQList} con el historico de
+#' los intervalos de validacion de las unidades.
 #'
 #' @param HRUnitParam Objeto de clase \linkS4class{HRUnitParam} con los parametros necesarios
 #' para calcular el hit rate de un conjunto de unidades.
@@ -41,7 +53,7 @@ setMethod(
 
   Periods.RawData <- getPeriods(RawData)
   Periods.EdData <- getPeriods(EdData)
-  if (length(intersect(Periods.RawData, Periods.EdData)) == 0) stop('[HRInterval::IntervalUnitHitRate] Los parametros RawData y EdData no tienen ningún periodo en común.')
+  if (length(intersect(Periods.RawData, Periods.EdData)) == 0) stop('[HRInterval::IntervalUnitHitRate] Los parametros RawData y EdData no tienen ningun periodo en comun.')
 
   VarName <- HRUnitParam@VarRoles[['ObjVariable']]
   IDDD_RawData <- unique(unlist(lapply(getData(RawData), getIDDD)))
@@ -62,10 +74,12 @@ setMethod(
   Units <- fintersect(Units, EdUnits)
   Units <- fintersect(Units, RawUnits)
 
+
   if (!HRUnitParam@VarRoles[['EditName']] %in% Edit_IntervalData) {
 
     warning('[HRInterval::IntervalUnitHitRate] El parametro IntervalData no contiene datos sobre el edit especificado en la componente EditName de VarRoles.')
     IntervalsTable <- copy(Units)[, (IntervalsLimits) := NA_real_]
+    IDQuals <- c(IDQuals, 'Period')
 
   }else {
 
@@ -82,7 +96,7 @@ setMethod(
   RawTable <- getValues(RawData, VarName, Units)
 
   ErrorTable <- merge(EdTable, RawTable, by = IDQuals, suffixes = c('.ed', '.raw'))
-  ErrorTable <- merge(ErrorTable, IntervalsTable, by = IDQuals)
+  ErrorTable <- merge(ErrorTable, IntervalsTable, by = intersect(IDQuals, names(IntervalsTable)))
 
   ErrorTable[, Error := (abs(as.numeric(get(paste0(VarName,'.ed'))) - as.numeric(get(paste0(VarName,'.raw')))) > .Machine$double.eps) * 1L ]
   ErrorTable[, Flagged := (as.numeric(get(paste0(VarName,'.raw'))) < as.numeric(get(IntervalsLimits[1])) | as.numeric(get(paste0(VarName,'.raw'))) > as.numeric(get(IntervalsLimits[2]))) * 1L]

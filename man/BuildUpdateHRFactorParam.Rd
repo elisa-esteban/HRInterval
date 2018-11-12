@@ -9,9 +9,12 @@ BuildUpdateHRFactorParam(EditName = character(0), Units = data.table(),
 }
 \arguments{
 \item{EditName}{\code{Vector} de tipo \code{character} de longitud 1 con el nombre
-del Edit para el que se establece la condición.}
+del Edit para el que se establece la condicion.}
 
-\item{Values}{\code{list} con los nuevos valores de los distintos parámetros del
+\item{Units}{\code{data.table} con el conjunto de unidades cuyos parametros se
+desea actualizar.}
+
+\item{Values}{\code{list} con los nuevos valores de los distintos parametros del
 HitRate que se quieren actualizar.}
 }
 \value{
@@ -21,7 +24,7 @@ of classes \code{GenConditionParam}, \code{FixedConditionParam} or \code{TSCondi
 }
 \description{
 Este constructor devuelve un objeto de clase \linkS4class{UpdateHRFactorParam}.
-a partir de un conjunto de parámetros.
+a partir de un conjunto de parametros.
 }
 \examples{
 \dontrun{

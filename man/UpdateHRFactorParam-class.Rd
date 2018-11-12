@@ -3,22 +3,22 @@
 \docType{class}
 \name{UpdateHRFactorParam-class}
 \alias{UpdateHRFactorParam-class}
-\title{Clase S4 para la actualización de los parámetros del Hit Rate por unidad}
+\title{Clase S4 para la actualizacion de los parametros del Hit Rate por unidad}
 \description{
-Definición de la clase S4 llamada \code{UpdateHRFactorParam} para
-la actualización de los parámetros utilizados en el cálculo del Hit Rate por
-unidad en la fase longitudinal de la depuración selectiva.
+Definicion de la clase S4 llamada \code{UpdateHRFactorParam} para
+la actualizacion de los parametros utilizados en el calculo del Hit Rate por
+unidad en la fase longitudinal de la depuracion selectiva.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{EditName}}{Vector carácter con los nombres de los edits cuyos parámetros
+\item{\code{EditName}}{Vector caracter con los nombres de los edits cuyos parametros
 queremos actualizar.}
 
 \item{\code{Units}}{data.table con las unidades para las que se van a modificar los
-parámetros..}
+parametros.}
 
-\item{\code{Values}}{lista con los valores de los parámetros que intervienen en el
+\item{\code{Values}}{lista con los valores de los parametros que intervienen en el
 cálculo del HitRate que se desean actualizar.
 .}
 }}

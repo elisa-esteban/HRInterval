@@ -4,7 +4,7 @@
 \name{HRFactor}
 \alias{HRFactor}
 \alias{HRFactor,StQ,StQList,StQList,StQList,HRFactorParam-method}
-\title{Cálculo del factor hit rate}
+\title{Calculo del factor hit rate}
 \usage{
 HRFactor(object, EdData, RawData, IntervalData, Param)
 
@@ -15,14 +15,23 @@ HRFactor(object, EdData, RawData, IntervalData, Param)
 \item{object}{Objeto de clase \linkS4class{StQ} con los datos para los que se quiere calcular
 el intervalo.}
 
-\item{Param}{Objeto de clase \linkS4class{HRFactorParam} con los parámetros necesarios para
+\item{EdData}{objeto de clase \linkS4class{StQList} con el historico de
+datos depurados de las unidades.}
+
+\item{RawData}{objeto de clase \linkS4class{StQList} con el historico de
+datos sin depurar de las unidades.}
+
+\item{IntervalData}{objeto de clase \linkS4class{StQList} con el historico de
+intervalos de validacion.}
+
+\item{Param}{Objeto de clase \linkS4class{HRFactorParam} con los parametros necesarios para
 calcular el factor hit rate.}
 }
 \value{
 \code{Vector} de tipo \code{numeric} con los factores hit rate de la variable.
 }
 \description{
-\code{HRFactor} calcula el factor hit rate para obtener el radio de los intervalos de validación
+\code{HRFactor} calcula el factor hit rate para obtener el radio de los intervalos de validacion
 con el método \code{\link{HRInterval}}.
 }
 \examples{
