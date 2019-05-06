@@ -15,7 +15,7 @@
 #' @param Param Objeto de clase \linkS4class{HRIntervalParam} con los parametros necesarios para
 #' determinar los intervalos.
 #'
-#' @return Objeto de clase \linkS4class{IntervalsDT} con los intervalos de validacion para los datos
+#' @return Objeto de clase \linkS4class{data.table} con los intervalos de validacion para los datos
 #' del objeto de entrada \code{object}.
 #'
 #' @examples
