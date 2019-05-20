@@ -1,7 +1,7 @@
 #' Clase S4 HRIntervalParam para los parametros del metodo HRInterval
 #'
-#' Definicion de la clase S4 \code{HRIntervalParam} que contiene los parametros que utiliza el metodo
-#' \code{\link{HRInterval}}.
+#' Definicion de la clase S4 \code{HRIntervalParam} que contiene los parametros que utiliza el
+#' metodo \code{\link{HRInterval}}.
 #'
 #' @slot Units objeto de clase \code{data.table} con las unidades para las que se van a calcular
 #' los intervalos.
@@ -19,22 +19,22 @@
 #' para los extremos inferior y superior de los intervalos de validacion.
 #'
 #' @slot LastFactor objeto de clase \code{data.table} con los valores del factor hit rate del edit
-#' en el ultimo periodo para cada unidad.
+#' en el ultimo periodo, para cada unidad.
 #'
 #' @slot BestTSPred Objeto de clase \linkS4class{data.table} con la mejor prediccion de entre un
-#' conjunto de modelos para la variable considerada.
+#' conjunto de modelos para la variable considerada, para cada unidad.
 #'
-#' @slot MinFactor objeto de clase \code{data.table} con los valores minimos del factor hit rate
-#' para cada unidad.
+#' @slot MinFactor objeto de clase \code{data.table} con los valores minimos que ha de tener el
+#' factor hit rate del edit para cada unidad.
 #'
-#' @slot MaxFactor objeto de clase \code{data.table} con los valores maximos del factor hit rate
-#' para cada unidad.
+#' @slot MaxFactor objeto de clase \code{data.table} con los valores maximos que ha de tener el
+#' factor hit rate del edit para cada unidad.
 #'
-#' @slot HRUnit objeto de clase \code{data.table} con los valores del hit rate de los intervalos
-#' para cada unidad.
+#' @slot HRUnit objeto de clase \code{data.table} con los valores del hit rate asociado al edit
+#' especificado, para cada unidad.
 #'
 #' @slot CHRUnit objeto de clase \code{data.table} con los valores optimos de las unidades que no
-#' han sido marcadas y efectivamente no tenian error para cada unidad.
+#' han sido marcadas y efectivamente no tenian error, para el edit especificado y para cada unidad
 #'
 #' @slot HRDomain objeto de clase \code{data.table} con los valores del hit rate de los intervalos
 #' para cada celda (particion de la muestra).
@@ -49,9 +49,11 @@
 #' \emph{hit-rate}. Debe ser, para cada unidad, un valor en el intervalo [0, 1] y esta asociado al
 #' numero de unidades no marcadas y sin error.
 #'
-#' @slot Lower objeto de clase \code{data.table}.
+#' @slot Lower objeto de clase \code{data.table} que contiene, para cada unidad, valores fijos para 
+#' los extremos inferiores de los intervalos o el valor NA en caso de que se quieran calcular.
 #'
-#' @slot Upper objeto de clase \code{data.table}.
+#' @slot Upper objeto de clase \code{data.table}que contiene, para cada unidad, valores fijos para 
+#' los extremos superiores de los intervalos o el valor NA en caso de que se quieran calcular.
 #'
 #' @examples
 #' # Un prototipo vacío

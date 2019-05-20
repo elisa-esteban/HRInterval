@@ -1,18 +1,16 @@
 #' @title Clase S4 para la actualizacion de los parametros del Hit Rate por unidad
 #'
-#' @description Definicion de la clase S4 llamada \code{UpdateHRFactorParam} para
-#' la actualizacion de los parametros utilizados en el calculo del Hit Rate por
-#' unidad en la fase longitudinal de la depuracion selectiva.
+#' @description Definicion de la clase S4 llamada \code{UpdateHRFactorParam} para la actualizacion
+#' de los parametros utilizados en el calculo del Hit Rate por unidad en la fase longitudinal de la
+#' depuracion selectiva.
 #'
-#' @slot EditName Vector caracter con los nombres de los edits cuyos parametros
-#'  queremos actualizar.
+#' @slot EditName \code{Vector} de tipo caracter y longitud 1 con el nombre del edit cuyos 
+#' parametros se van a actualizar.
 #'
-#' @slot Units data.table con las unidades para las que se van a modificar los
-#' parametros.
+#' @slot Units \code{data.table} con las unidades para las que se van a modificar los parametros.
 #'
-#' @slot Values lista con los valores de los parametros que intervienen en el
-#' cálculo del HitRate que se desean actualizar.
-#' .
+#' @slot Values lista con nombres que contiene los valores que actualizaran los parametros que 
+#' intervienen en el calculo del HitRate por unidad.
 #'
 #' @examples
 #' new(Class = 'UpdateHRFactorParam')

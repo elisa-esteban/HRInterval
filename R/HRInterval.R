@@ -1,22 +1,23 @@
 #' Calculo de intervalos de validacion
 #'
-#' \code{HRInterval} construye intervalos de validacion determinando los valores de sus centros
-#' y sus radios.
+#' \code{HRInterval} construye intervalos de validacion tomando como centro de los intervalos la
+#' predicción de la variable considerada y como radio el producto de la desviación del error de
+#' predicción por el factor hit rate asociado a la variable.
 #'
-#' @param object Objeto de clase \linkS4class{StQList} con los datos y unidades de las series de
-#' tiempo con los que vamos a calcular los intervalos.
+#' @param object Objeto de clase \linkS4class{StQList} con el historico de datos depurados de las
+#' unidades.
 #'
-#' @param RawData objeto de clase \linkS4class{StQList} con el historico de
-#' datos sin depurar de las unidades.
+#' @param RawData objeto de clase \linkS4class{StQList} con el historico de datos sin depurar de las
+#' unidades.
 #'
-#' @param IntervalData objeto de clase \linkS4class{StQList} con el historico de
-#' los intervalos de validacion de las unidades.
+#' @param IntervalData objeto de clase \linkS4class{StQList} con el historico de los intervalos de
+#' validacion de las unidades.
 #'
 #' @param Param Objeto de clase \linkS4class{HRIntervalParam} con los parametros necesarios para
 #' determinar los intervalos.
 #'
-#' @return Objeto de clase \linkS4class{IntervalsDT} con los intervalos de validacion para los datos
-#' del objeto de entrada \code{object}.
+#' @return \code{data.table} con los extremos inferior y superior de los intervalos de validacion
+#' de cada unidad, asi como el factor hit rate asociado a la variable considerada para cada unidad.
 #'
 #' @examples
 #' \dontrun{

@@ -1,21 +1,18 @@
 #' @title Constructor de objetos de clase \linkS4class{UpdateHRFactorParam}
 #'
-#' @description Este constructor devuelve un objeto de clase \linkS4class{UpdateHRFactorParam}.
-#' a partir de un conjunto de parametros.
+#' @description Este constructor devuelve un objeto de clase \linkS4class{UpdateHRFactorParam} a
+#' partir de un conjunto de parametros.
 #'
-#' @param EditName \code{Vector} de tipo \code{character} de longitud 1 con el nombre
-#' del Edit para el que se establece la condicion.
+#' @param EditName \code{Vector} de tipo \code{character} de longitud 1 con el nombre del Edit para
+#' el que se establece la condicion.
 #'
-#' @param Units \code{data.table} con el conjunto de unidades cuyos parametros se
-#' desea actualizar.
+#' @param Units \code{data.table} con el conjunto de unidades cuyos parametros se desean actualizar.
 #'
-#' @param Values  \code{list} con los nuevos valores de los distintos parametros del
-#' HitRate que se quieren actualizar.
+#' @param Values lista con nombres que contiene los valores que actualizaran los parametros que 
+#' intervienen en el calculo del HitRate por unidad.
 #'
 #'
-#' @return Un objeto de clase \linkS4class{UpdateHRFactorParam} with components specified in the input
-#' parameter Data. Depending on the specified components, the output object will be
-#' of classes \code{GenConditionParam}, \code{FixedConditionParam} or \code{TSConditionParam}.
+#' @return Un objeto de clase \linkS4class{UpdateHRFactorParam} .
 #'
 #'
 #' @examples

@@ -3,22 +3,22 @@
 #' \code{HRFactor} calcula el factor hit rate para obtener el radio de los intervalos de validacion
 #' con el método \code{\link{HRInterval}}.
 #'
-#' @param object Objeto de clase \linkS4class{StQ} con los datos para los que se quiere calcular
-#' el intervalo.
+#' @param object Objeto de clase \linkS4class{StQ} con las unidades para las que se quieren calcular
+#' los factores hit rate.
 #'
-#' @param EdData objeto de clase \linkS4class{StQList} con el historico de
-#' datos depurados de las unidades.
+#' @param EdData objeto de clase \linkS4class{StQList} con el historico de datos depurados de las
+#' unidades.
 #'
-#' @param RawData objeto de clase \linkS4class{StQList} con el historico de
-#' datos sin depurar de las unidades.
+#' @param RawData objeto de clase \linkS4class{StQList} con el historico de datos sin depurar de las
+#' unidades.
 #'
-#' @param IntervalData objeto de clase \linkS4class{StQList} con el historico de
-#' intervalos de validacion.
+#' @param IntervalData objeto de clase \linkS4class{StQList} con el historico de intervalos de
+#' validacion de las unidades.
 #'
 #' @param Param Objeto de clase \linkS4class{HRFactorParam} con los parametros necesarios para
 #' calcular el factor hit rate.
 #'
-#' @return \code{Vector} de tipo \code{numeric} con los factores hit rate de la variable.
+#' @return \code{data.table} con los factores hit rate de la variable.
 #'
 #' @examples
 #' \dontrun{
@@ -99,7 +99,6 @@ setMethod(
 
       auxData <- list(HRUnit, HRDomain, Param@LastFactor, Param@MinFactor, Param@MaxFactor, Param@HRUnit, Param@CHRUnit, Param@HRDomain, Param@CHRDomain, Param@HRlambda, Param@CHRlambda)
       auxData <- Reduce(function(x, y){merge(x, y, by = IDQuals)}, auxData)
-      # auxData[, HRFactor := LastFactor + MaxFactor * (1 - (1 - HRlambda) * IntervHRUnit / HRUnit - HRlambda * IntervHRDomain / HRDomain), by = IDQuals]
       auxData[, HRFactor := LastFactor + MaxFactor * (1 - (1 - HRlambda) * IntervHRUnit / HRUnit - HRlambda * IntervHRDomain / HRDomain) -
                                          MaxFactor * (1 - (1 - CHRlambda) * IntervCHRUnit / CHRUnit - CHRlambda * IntervCHRDomain / CHRDomain), by = IDQuals]
       output <- auxData[, HRFactor := max(MinFactor, HRFactor), by = IDQuals]

@@ -1,17 +1,19 @@
 #' Actualizacion de los parametros para el calculo del factor hit rate.
 #'
 #' \code{UpdateParamHRFactor} Actualiza la lista de parametros para el calculo del factor hit rate
-#' con el metodo \code{\link{HRInterval}}.
+#' con el metodo \code{\link{HRFactor}}.
 #'
-#' @param object Lista o \linkS4class{data.table} con los valores para cada edit
-#' de los parametros que intervienen en el calculo del HitRate.
+#' @param object \linkS4class{data.table} con los valores de los parametros que intervienen en el
+#' calculo del HitRate para un edit concreto, o lista de \linkS4class{data.table} con dichos
+#' parametros para cada variable y cada edit.
 #'
-#' @param Param Objeto de clase \linkS4class{UpdateHRFactorParam} con las unidades
-#' y valores de los parametros que se desean actualizar en el objeto de entrada
-#' object.
+#' @param Param Objeto de clase \linkS4class{UpdateHRFactorParam} con las unidades y valores de los
+#' parametros que se desean actualizar en el objeto de entrada \code{object}, o lista de objetos de
+#' este tipo cuando el objeto de entrada \code{object} es una lista.
 #'
-#' @return \code{Lista} con los parámetros para el calculo de los factores hit rate
-#' del edit y unidades seleccionados actualizados.
+#' @return \linkS4class{data.table} o lista de \linkS4class{data.table}, segun sea el objeto de
+#' entrada \code{object}, con los parametros para el calculo de los factores hit rate del edit y
+#' unidades seleccionados actualizados.
 #'
 #' @examples
 #' \dontrun{
@@ -32,8 +34,6 @@ setMethod(
   signature = c("data.table", "UpdateHRFactorParam"),
   function(object, Param){
 
-    #EditName <- Param@EditName
-    #VarName <- unlist(strsplit(EditName, '_'))[1]
     Values <- Param@Values
     Units <- Param@Units
 
@@ -57,8 +57,6 @@ setMethod(
 
     out <- rbindlist(list(out, newParams))
     setkeyv(out, IDQual)
-
-    #object[[VarName]][[EditName]] <- out
 
     return(out)
 
