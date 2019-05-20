@@ -16,16 +16,8 @@
 #' @param Param Objeto de clase \linkS4class{HRIntervalParam} con los parametros necesarios para
 #' determinar los intervalos.
 #'
-<<<<<<< HEAD
 #' @return \code{data.table} con los extremos inferior y superior de los intervalos de validacion
 #' de cada unidad, asi como el factor hit rate asociado a la variable considerada para cada unidad.
-||||||| merged common ancestors
-#' @return Objeto de clase \linkS4class{IntervalsDT} con los intervalos de validacion para los datos
-#' del objeto de entrada \code{object}.
-=======
-#' @return Objeto de clase \linkS4class{data.table} con los intervalos de validacion para los datos
-#' del objeto de entrada \code{object}.
->>>>>>> 45f0910ef1f5b6dbcf463d9ea7d94156a76bc1f7
 #'
 #' @examples
 #' \dontrun{
