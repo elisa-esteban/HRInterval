@@ -17,20 +17,22 @@ UpdateParamHRFactor(object, Param)
 \S4method{UpdateParamHRFactor}{list,list}(object, Param)
 }
 \arguments{
-\item{object}{Lista o \linkS4class{data.table} con los valores para cada edit
-de los parametros que intervienen en el calculo del HitRate.}
+\item{object}{\linkS4class{data.table} con los valores de los parametros que intervienen en el
+calculo del HitRate para un edit concreto, o lista de \linkS4class{data.table} con dichos
+parametros para cada variable y cada edit.}
 
-\item{Param}{Objeto de clase \linkS4class{UpdateHRFactorParam} con las unidades
-y valores de los parametros que se desean actualizar en el objeto de entrada
-object.}
+\item{Param}{Objeto de clase \linkS4class{UpdateHRFactorParam} con las unidades y valores de los
+parametros que se desean actualizar en el objeto de entrada \code{object}, o lista de objetos de
+este tipo cuando el objeto de entrada \code{object} es una lista.}
 }
 \value{
-\code{Lista} con los parámetros para el calculo de los factores hit rate
-del edit y unidades seleccionados actualizados.
+\linkS4class{data.table} o lista de \linkS4class{data.table}, segun sea el objeto de
+entrada \code{object}, con los parametros para el calculo de los factores hit rate del edit y
+unidades seleccionados actualizados.
 }
 \description{
 \code{UpdateParamHRFactor} Actualiza la lista de parametros para el calculo del factor hit rate
-con el metodo \code{\link{HRInterval}}.
+con el metodo \code{\link{HRFactor}}.
 }
 \examples{
 \dontrun{

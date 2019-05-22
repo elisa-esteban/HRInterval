@@ -28,43 +28,35 @@ que se esta construyendo los intervalos de validacion.}
 \item{\code{DomainNames}}{\code{Vector} de tipo \code{character} con los nombres de la variables que
 establecen las celdas (partición de la muestra).}
 
-\item{\code{Intervals}}{objeto de clase \linkS4class{StQList} con los limites de los intervalos del edit
-para cada unidad}
-
 \item{\code{LastFactor}}{objeto de clase \code{data.table} con los valores del factor hit rate del edit
-en el ultimo periodo para cada unidad.}
-
-\item{\code{RawData}}{Objeto de clase \linkS4class{StQList} con los datos sin depurar que se encuentran
-en los ficheros FG del repositorio de la encuesta.}
-
-\item{\code{EdData}}{Objeto de clase \linkS4class{StQList} con los datos finales que se encuentran en los
-ficheros FF del repositorio de la encuesta.}
+en el ultimo periodo, para cada unidad.}
 
 \item{\code{MinFactor}}{objeto de clase \code{data.table} con los valores minimos del factor hit rate
-para cada unidad.}
+de cada edit para cada unidad.}
 
 \item{\code{MaxFactor}}{objeto de clase \code{data.table} con los valores maximos del factor hit rate
-para cada unidad.}
+de cada edit para cada unidad.}
 
-\item{\code{HRUnit}}{objeto de clase \code{data.table} con los valores del hit rate de los intervalos
-para cada unidad.}
+\item{\code{HRUnit}}{objeto de clase \code{data.table} con los valores del hit rate asociado al edit
+especificado, para cada unidad.}
 
-\item{\code{CHRUnit}}{objeto de clase \code{data.table} con los valores óptimos de las unidades que no
-han sido marcadas y efectivamente no tenían error para cada unidad.}
+\item{\code{CHRUnit}}{objeto de clase \code{data.table} con los valores optimos de las unidades que no
+han sido marcadas y efectivamente no tenian error, para el edit especificado y para cada unidad.}
 
-\item{\code{HRDomain}}{objeto de clase \code{data.table} con los valores del hit rate de los intervalos
-para cada celda (particion de la muestra).}
+\item{\code{HRDomain}}{objeto de clase \code{data.table} con los valores del hit rate asociado al edit
+especificado, para cada celda (particion de la muestra).}
 
 \item{\code{CHRDomain}}{objeto de clase \code{data.table} con los valores optimos de las unidades que no
-han sido marcadas y efectivamente no tenian error para cada celda (partición de la muestra).}
+han sido marcadas y efectivamente no tenian error, para el edit especificado y para cada celda
+(partición de la muestra).}
 
 \item{\code{HRlambda}}{objeto de clase \code{data.table} para la estabilizacion del factor asociado al
-\emph{hit-rate}. Debe ser, para cada unidad, un valor en el intervalo [0, 1] y esta asociado al
-número de unidades marcadas correctamente.}
+\emph{hit-rate}. Debe ser, para cada edit y cada unidad, un valor en el intervalo [0, 1] y esta
+asociado al numero de unidades marcadas correctamente.}
 
 \item{\code{CHRlambda}}{objeto de clase \code{data.table} para la estabilizacion del factor asociado al
-\emph{hit-rate}. Debe ser, para cada unidad, un valor en el intervalo [0, 1] y esta asociado al
-numero de unidades no marcadas y sin error.}
+\emph{hit-rate}. Debe ser, para cada edit y cada unidad, un valor en el intervalo [0, 1] y esta
+asociado al numero de unidades no marcadas y sin error.}
 }}
 
 \examples{

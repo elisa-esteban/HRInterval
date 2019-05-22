@@ -8,23 +8,20 @@ BuildUpdateHRFactorParam(EditName = character(0), Units = data.table(),
   Values = list())
 }
 \arguments{
-\item{EditName}{\code{Vector} de tipo \code{character} de longitud 1 con el nombre
-del Edit para el que se establece la condicion.}
+\item{EditName}{\code{Vector} de tipo \code{character} de longitud 1 con el nombre del Edit para
+el que se establece la condicion.}
 
-\item{Units}{\code{data.table} con el conjunto de unidades cuyos parametros se
-desea actualizar.}
+\item{Units}{\code{data.table} con el conjunto de unidades cuyos parametros se desean actualizar.}
 
-\item{Values}{\code{list} con los nuevos valores de los distintos parametros del
-HitRate que se quieren actualizar.}
+\item{Values}{lista con nombres que contiene los valores que actualizaran los parametros que 
+intervienen en el calculo del HitRate por unidad.}
 }
 \value{
-Un objeto de clase \linkS4class{UpdateHRFactorParam} with components specified in the input
-parameter Data. Depending on the specified components, the output object will be
-of classes \code{GenConditionParam}, \code{FixedConditionParam} or \code{TSConditionParam}.
+Un objeto de clase \linkS4class{UpdateHRFactorParam} .
 }
 \description{
-Este constructor devuelve un objeto de clase \linkS4class{UpdateHRFactorParam}.
-a partir de un conjunto de parametros.
+Este constructor devuelve un objeto de clase \linkS4class{UpdateHRFactorParam} a
+partir de un conjunto de parametros.
 }
 \examples{
 \dontrun{
