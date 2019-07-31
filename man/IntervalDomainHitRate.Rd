@@ -12,14 +12,13 @@ IntervalDomainHitRate(object, RawData, IntervalData, HRDomainParam)
   IntervalData, HRDomainParam)
 }
 \arguments{
-\item{object}{objeto de clase \linkS4class{StQ} con las unidades para las
-que se desea calcular el hit rate.}
+\item{object}{objeto de clase \linkS4class{StQ} con las unidades para las que se desea calcular
+el hit rate.}
 
-\item{RawData}{objeto de clase \linkS4class{StQ} con los datos sin depurar de
-las unidades.}
+\item{RawData}{objeto de clase \linkS4class{StQ} con los datos sin depurar de las unidades.}
 
-\item{IntervalData}{objeto de clase \linkS4class{StQ} los intervalos de
-validacion de las unidades.}
+\item{IntervalData}{objeto de clase \linkS4class{StQ} los intervalos de validacion de las
+unidades.}
 
 \item{HRDomainParam}{Objeto de clase \linkS4class{HRDomainParam} con los parametros necesarios
 para calcular el hit rate en un determinado dominio.}

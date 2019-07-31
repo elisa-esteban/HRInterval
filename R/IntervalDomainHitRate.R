@@ -3,14 +3,13 @@
 #' \code{IntervalDomainHitRate} calcula el hit rate de un conjunto de intervalos para un determinado
 #' dominio.
 #'
-#' @param object objeto de clase \linkS4class{StQ} con las unidades para las
-#' que se desea calcular el hit rate.
+#' @param object objeto de clase \linkS4class{StQ} con las unidades para las que se desea calcular
+#' el hit rate.
 #'
-#' @param RawData objeto de clase \linkS4class{StQ} con los datos sin depurar de
-#' las unidades.
+#' @param RawData objeto de clase \linkS4class{StQ} con los datos sin depurar de las unidades.
 #'
-#' @param IntervalData objeto de clase \linkS4class{StQ} los intervalos de
-#' validacion de las unidades.
+#' @param IntervalData objeto de clase \linkS4class{StQ} los intervalos de validacion de las
+#' unidades.
 #'
 #' @param HRDomainParam Objeto de clase \linkS4class{HRDomainParam} con los parametros necesarios
 #' para calcular el hit rate en un determinado dominio.

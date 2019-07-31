@@ -2,20 +2,20 @@
 #'
 #' \code{IntervalUnitHitRate} calcula el hit rate de un conjunto de unidades.
 #'
-#' @param object objeto de clase \linkS4class{StQ} con las unidades para las
-#' que se desea calcular el hit rate.
+#' @param object objeto de clase \linkS4class{StQ} con las unidades para las que se desea calcular
+#' el hit rate.
 #'
-#' @param EdData objeto de clase \linkS4class{StQList} con el historico de
-#' datos depurados de las unidades.
+#' @param EdData objeto de clase \linkS4class{StQList} con el historico de datos depurados de las
+#' unidades.
 #'
-#' @param RawData objeto de clase \linkS4class{StQList} con el historico de
-#' datos sin depurar de las unidades.
+#' @param RawData objeto de clase \linkS4class{StQList} con el historico de datos sin depurar de las
+#' unidades.
 #'
-#' @param IntervalData objeto de clase \linkS4class{StQList} con el historico de
-#' los intervalos de validacion de las unidades.
+#' @param IntervalData objeto de clase \linkS4class{StQList} con el historico de los intervalos de
+#' validacion de las unidades.
 #'
-#' @param HRUnitParam Objeto de clase \linkS4class{HRUnitParam} con los parametros necesarios
-#' para calcular el hit rate de un conjunto de unidades.
+#' @param HRUnitParam Objeto de clase \linkS4class{HRUnitParam} con los parametros necesarios para
+#' calcular el hit rate de un conjunto de unidades.
 #'
 #' @return \code{data.table} con el hit rate de los intervalos de entrada para cada unidad.
 #'
@@ -49,7 +49,7 @@ setMethod(
   RawUnits[, ('Period') := NULL]
 
 
-  IDQualsParam <- HRUnitParam@VarRoles[['Units']]
+  # IDQualsParam <- HRUnitParam@VarRoles[['Units']]
 
   Periods.RawData <- getPeriods(RawData)
   Periods.EdData <- getPeriods(EdData)
