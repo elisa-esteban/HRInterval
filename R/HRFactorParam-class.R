@@ -78,7 +78,7 @@ setClass(
 
     if (length(object@Edit) != 1) stop('[HRFactorParam validation] Edit debe ser un vector de tipo character de longitud 1.')
     if (length(object@VarName) != 1) stop('[HRFactorParam validation] VarName debe ser un vector de tipo character de longitud 1.')
-    if (length(IntervalsLimits) != 2) stop('[HRFactorParam validation] IntervalsLimits debe ser un vector de tipo character de longitud 2 con los nombres de los limites de los intervalos.')
+    if (length(object@IntervalsLimits) != 2) stop('[HRFactorParam validation] IntervalsLimits debe ser un vector de tipo character de longitud 2 con los nombres de los limites de los intervalos.')
 
     IDQuals <- names(object@Units)
     if (!identical(names(object@LastFactor), c(IDQuals, 'LastFactor'))) stop('[HRFactorParam validation] Los nombres de la data.table del slot LastFactor han de ser: ', c(IDQuals, 'LastFactor'))
