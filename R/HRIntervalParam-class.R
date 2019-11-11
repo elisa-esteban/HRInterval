@@ -49,10 +49,10 @@
 #' \emph{hit-rate}. Debe ser, para cada unidad, un valor en el intervalo [0, 1] y esta asociado al
 #' numero de unidades no marcadas y sin error.
 #'
-#' @slot Lower objeto de clase \code{data.table} que contiene, para cada unidad, valores fijos para 
+#' @slot Lower objeto de clase \code{data.table} que contiene, para cada unidad, valores fijos para
 #' los extremos inferiores de los intervalos o el valor NA en caso de que se quieran calcular.
 #'
-#' @slot Upper objeto de clase \code{data.table}que contiene, para cada unidad, valores fijos para 
+#' @slot Upper objeto de clase \code{data.table}que contiene, para cada unidad, valores fijos para
 #' los extremos superiores de los intervalos o el valor NA en caso de que se quieran calcular.
 #'
 #' @examples
@@ -101,17 +101,17 @@ setClass(
     if (!identical(names(object@Lower), c(IDQuals, 'Lower'))) stop('[HRIntervalParam validation] Los nombres de la data.table del slot Lower han de ser: ', IDQuals, ' y ', 'Lower')
     if (!identical(names(object@Upper), c(IDQuals, 'Upper'))) stop('[HRIntervalParam validation] Los nombres de la data.table del slot Upper han de ser: ', IDQuals, ' y ', 'Upper')
 
-    if (dim(merge(object@LastFactor, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y LastFactor no coinciden.')
-    if (dim(merge(object@MinFactor, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y MinFactor no coinciden.')
-    if (dim(merge(object@MaxFactor, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y MaxFactor no coinciden.')
-    if (dim(merge(object@HRUnit, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y HRUnit no coinciden.')
-    if (dim(merge(object@CHRUnit, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y CHRUnit no coinciden.')
-    if (dim(merge(object@HRDomain, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y HRDomain no coinciden.')
-    if (dim(merge(object@CHRDomain, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y CHRDomain no coinciden.')
-    if (dim(merge(object@HRlambda, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y HRlambda no coinciden.')
-    if (dim(merge(object@CHRlambda, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y CHRlambda no coinciden.')
-    if (dim(merge(object@Lower, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y Lower no coinciden.')
-    if (dim(merge(object@Upper, object@Units, by = IDQuals))[1] != dim(Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y Upper no coinciden.')
+    if (dim(merge(object@LastFactor, object@Units, by = IDQuals))[1] != dim(object@Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y LastFactor no coinciden.')
+    if (dim(merge(object@MinFactor, object@Units, by = IDQuals))[1] != dim(object@Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y MinFactor no coinciden.')
+    if (dim(merge(object@MaxFactor, object@Units, by = IDQuals))[1] != dim(object@Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y MaxFactor no coinciden.')
+    if (dim(merge(object@HRUnit, object@Units, by = IDQuals))[1] != dim(object@Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y HRUnit no coinciden.')
+    if (dim(merge(object@CHRUnit, object@Units, by = IDQuals))[1] != dim(object@Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y CHRUnit no coinciden.')
+    if (dim(merge(object@HRDomain, object@Units, by = IDQuals))[1] != dim(object@Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y HRDomain no coinciden.')
+    if (dim(merge(object@CHRDomain, object@Units, by = IDQuals))[1] != dim(object@Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y CHRDomain no coinciden.')
+    if (dim(merge(object@HRlambda, object@Units, by = IDQuals))[1] != dim(object@Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y HRlambda no coinciden.')
+    if (dim(merge(object@CHRlambda, object@Units, by = IDQuals))[1] != dim(object@Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y CHRlambda no coinciden.')
+    if (dim(merge(object@Lower, object@Units, by = IDQuals))[1] != dim(object@Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y Lower no coinciden.')
+    if (dim(merge(object@Upper, object@Units, by = IDQuals))[1] != dim(object@Units)[1]) stop('[HRIntervalParam validation] Las unidades de los slots Units y Upper no coinciden.')
 
 
     return(TRUE)
