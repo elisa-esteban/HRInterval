@@ -65,10 +65,10 @@ setMethod(
 
     Units_RawData <- getUnits(RawData)
     Units_RawData[, Period := NULL]
-    if (dim(merge(unique(Units_RawData), Param@Units, by = IDQuals))[1] == 0) stop('[HRFactor validation] En el parametro RawData no exite ninguna unidad en el slot Units de Param .')
+    if (dim(merge(unique(Units_RawData), Param@Units, by = IDQuals))[1] == 0) stop('[HRFactor validation] En el parametro RawData no existe ninguna unidad en el slot Units de Param .')
     Units_EdData <- getUnits(EdData)
     Units_EdData[, Period := NULL]
-    if (dim(merge(unique(Units_EdData), Param@Units, by = IDQuals))[1] == 0) stop('[HRFactor validation] En el parametro EdData no exite ninguna unidad en el slot Units de Param.')
+    if (dim(merge(unique(Units_EdData), Param@Units, by = IDQuals))[1] == 0) stop('[HRFactor validation] En el parametro EdData no existe ninguna unidad en el slot Units de Param.')
     Units_IntervalData <- getUnits(IntervalData)
     Units_IntervalData <- Units_IntervalData[, Period := NULL]
     if (dim(merge(unique(Units_IntervalData), Param@Units, by = IDQuals))[1] == 0) stop('[HRFactor validation] En el parametro IntervalData no exite ninguna unidad en el slot Units de Param')
@@ -95,15 +95,29 @@ setMethod(
       output <- Param@MaxFactor
       setnames(output, 'MaxFactor', 'HRFactor')
 
-    } else{
+    } else {
 
       auxData <- list(HRUnit, HRDomain, Param@LastFactor, Param@MinFactor, Param@MaxFactor, Param@HRUnit, Param@CHRUnit, Param@HRDomain, Param@CHRDomain, Param@HRlambda, Param@CHRlambda)
-      auxData <- Reduce(function(x, y){merge(x, y, by = IDQuals)}, auxData)
+      auxData <- Reduce(function(x, y){merge(x, y, by = IDQuals)}, auxData)[
+        , IntervHRUnit := as.numeric(IntervHRUnit)][
+        , IntervCHRUnit := as.numeric(IntervCHRUnit)][
+        , IntervHRDomain := as.numeric(IntervHRDomain)][
+        , IntervCHRDomain := as.numeric(IntervCHRDomain)][
+        , LastFactor := as.numeric(LastFactor)][
+        , MinFactor := as.numeric(MinFactor)][
+        , MaxFactor := as.numeric(MaxFactor)][
+        , HRUnit := as.numeric(HRUnit)][
+        , CHRUnit := as.numeric(CHRUnit)][
+        , HRDomain :=  as.numeric(HRDomain)][
+        , CHRDomain :=  as.numeric(CHRDomain)][
+        , HRlambda := as.numeric(HRlambda)][
+        , CHRlambda := as.numeric(CHRlambda)]
       auxData[!is.na(LastFactor), HRFactor := as.numeric(LastFactor) + MaxFactor * (1 - (1 - HRlambda) * IntervHRUnit / HRUnit - HRlambda * IntervHRDomain / HRDomain) -
-                                         MaxFactor * (1 - (1 - CHRlambda) * IntervCHRUnit / CHRUnit - CHRlambda * IntervCHRDomain / CHRDomain), by = IDQuals]
-      output <- auxData[!is.na(HRFactor), HRFactor := max(MinFactor, HRFactor), by = IDQuals]
-      output <- output[!is.na(HRFactor), HRFactor := min(MaxFactor, HRFactor), by = IDQuals]
+                MaxFactor * (1 - (1 - CHRlambda) * IntervCHRUnit / CHRUnit - CHRlambda * IntervCHRDomain / CHRDomain), by = IDQuals]
+      output <- auxData[, HRFactor := max(MinFactor, HRFactor), by = IDQuals]
+      output <- output[, HRFactor := min(MaxFactor, HRFactor), by = IDQuals]
       output <- output[is.na(HRFactor), HRFactor := MaxFactor]
+
       output <- output[, c(IDQuals, 'HRFactor'), with = FALSE]
     }
 
