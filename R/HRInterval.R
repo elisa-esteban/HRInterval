@@ -41,9 +41,9 @@ setMethod(
     Units <- Param@Units
     BestTS <- Param@BestTSPred
     VarName <- Param@VarName
-    Lower <- Param@Lower
+    Lower <- copy(Param@Lower)
     if (all(is.na(Lower[['Lower']]))) Lower[, Lower := NULL]
-    Upper <- Param@Upper
+    Upper <- copy(Param@Upper)
     if (all(is.na(Upper[['Upper']]))) Upper[, Upper := NULL]
 
     Times <- intersect(getPeriods(RawData), getPeriods(object))

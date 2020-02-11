@@ -99,14 +99,14 @@ setMethod(
 
       auxData <- list(HRUnit, HRDomain, Param@LastFactor, Param@MinFactor, Param@MaxFactor, Param@HRUnit, Param@CHRUnit, Param@HRDomain, Param@CHRDomain, Param@HRlambda, Param@CHRlambda)
       auxData <- Reduce(function(x, y){merge(x, y, by = IDQuals)}, auxData)
-      auxData[, HRFactor := LastFactor + MaxFactor * (1 - (1 - HRlambda) * IntervHRUnit / HRUnit - HRlambda * IntervHRDomain / HRDomain) -
+      auxData[!is.na(LastFactor), HRFactor := as.numeric(LastFactor) + MaxFactor * (1 - (1 - HRlambda) * IntervHRUnit / HRUnit - HRlambda * IntervHRDomain / HRDomain) -
                                          MaxFactor * (1 - (1 - CHRlambda) * IntervCHRUnit / CHRUnit - CHRlambda * IntervCHRDomain / CHRDomain), by = IDQuals]
-      output <- auxData[, HRFactor := max(MinFactor, HRFactor), by = IDQuals]
-      output <- auxData[, HRFactor := min(MaxFactor, HRFactor), by = IDQuals]
+      output <- auxData[!is.na(HRFactor), HRFactor := max(MinFactor, HRFactor), by = IDQuals]
+      output <- output[!is.na(HRFactor), HRFactor := min(MaxFactor, HRFactor), by = IDQuals]
+      output <- output[is.na(HRFactor), HRFactor := MaxFactor]
       output <- output[, c(IDQuals, 'HRFactor'), with = FALSE]
     }
 
-    gc()
 
     return(output)
 })
